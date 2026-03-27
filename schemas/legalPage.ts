@@ -1,9 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { GoLaw } from 'react-icons/go';
 
 export default defineType({
   name: 'legalPage',
-  title: 'Legal Page',
+  title: 'Legal Pages',
   type: 'document',
+  icon: GoLaw,
   fields: [
     defineField({
       name: 'title',
@@ -32,5 +34,11 @@ export default defineType({
   ],
   preview: {
     select: { title: 'title', subtitle: 'lastUpdated' },
+    prepare({ title, subtitle }) {
+      return {
+        title: title || 'Untitled',
+        subtitle: subtitle ? `Last updated: ${subtitle}` : undefined,
+      };
+    },
   },
 });

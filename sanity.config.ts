@@ -2,13 +2,43 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { schemaTypes } from './schemas';
 
-export default defineConfig({
-  name: 'default',
-  title: 'Phifer Web Solutions',
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-  dataset: 'production',
+// Types where clients can only edit existing documents, not create or delete
+const LOCKED_TYPES = ['page', 'legalPage', 'siteSettings', 'socialLinks', 'navigation'];
+
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID!;
+
+const sharedConfig = {
+  projectId,
   plugins: [structureTool()],
-  schema: {
-    types: schemaTypes,
+  schema: { types: schemaTypes },
+  document: {
+    actions: (prev: any[], context: { schemaType: string }) => {
+      if (LOCKED_TYPES.includes(context.schemaType)) {
+        return prev.filter(
+          (action: { action?: string }) => !['create', 'delete', 'duplicate'].includes(action.action ?? '')
+        );
+      }
+      return prev;
+    },
+    newDocumentOptions: (prev: { templateId: string }[]) => {
+      return prev.filter((opt) => !LOCKED_TYPES.includes(opt.templateId));
+    },
   },
-});
+};
+
+export default defineConfig([
+  {
+    ...sharedConfig,
+    name: 'production',
+    title: 'Phifer Web Solutions',
+    dataset: 'production',
+    basePath: '/production',
+  },
+  {
+    ...sharedConfig,
+    name: 'staging',
+    title: 'Phifer Web Solutions (Staging)',
+    dataset: 'staging',
+    basePath: '/staging',
+  },
+]);

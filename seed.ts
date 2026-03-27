@@ -4,7 +4,7 @@ import { getCliClient } from 'sanity/cli'
 
 const client = getCliClient()
 
-const documents = [
+const documents: any[] = [
   {
     "_type": "siteSettings",
     "_id": "siteSettings",
@@ -146,6 +146,37 @@ const documents = [
       "_type": "slug",
       "current": "/accessibility"
     }
+  },
+  {
+    "_type": "navigation",
+    "_id": "nav-main",
+    "navType": "main",
+    "items": [
+      { "_key": "home", "label": "Home", "url": "/" },
+      { "_key": "about", "label": "About", "url": "/about" },
+      { "_key": "services", "label": "Services", "url": "/services" },
+      { "_key": "portfolio", "label": "Portfolio", "url": "/portfolio" },
+      { "_key": "process", "label": "Process", "url": "/process" },
+      { "_key": "contact", "label": "Contact", "url": "/contact" }
+    ]
+  },
+  {
+    "_type": "navigation",
+    "_id": "nav-footer",
+    "navType": "footer",
+    "items": [
+      { "_key": "support", "label": "Support", "url": "/support" }
+    ]
+  },
+  {
+    "_type": "navigation",
+    "_id": "nav-legal",
+    "navType": "legal",
+    "items": [
+      { "_key": "privacy-policy", "label": "Privacy Policy", "url": "/privacy-policy" },
+      { "_key": "terms-and-conditions", "label": "Terms & Conditions", "url": "/terms-and-conditions" },
+      { "_key": "accessibility", "label": "Accessibility Statement", "url": "/accessibility" }
+    ]
   }
 ]
 
