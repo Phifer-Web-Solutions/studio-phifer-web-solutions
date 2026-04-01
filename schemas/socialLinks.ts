@@ -12,6 +12,7 @@ import {
   FaBluesky,
   FaMastodon,
   FaGlobe,
+  FaHouse,
 } from 'react-icons/fa6';
 import { FaXTwitter } from 'react-icons/fa6';
 
@@ -27,6 +28,7 @@ const PLATFORMS = [
   { title: 'Threads', value: 'threads' },
   { title: 'Bluesky', value: 'bluesky' },
   { title: 'Mastodon', value: 'mastodon' },
+  { title: 'Nextdoor', value: 'nextdoor' },
   { title: 'Other', value: 'other' },
 ];
 
@@ -42,6 +44,7 @@ const PLATFORM_ICON_MAP: Record<string, React.ComponentType> = {
   threads: FaThreads,
   bluesky: FaBluesky,
   mastodon: FaMastodon,
+  nextdoor: FaHouse,
   other: FaGlobe,
 };
 

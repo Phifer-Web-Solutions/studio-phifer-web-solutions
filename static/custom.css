@@ -1,0 +1,33 @@
+/* Scale up icons in the icon picker dialog */
+[data-ui="Dialog"] svg[viewBox] {
+  width: 2.5em !important;
+  height: 2em !important;
+}
+
+/* Give the grid cells more room to match */
+[data-ui="Dialog"] [data-ui="Grid"] > [data-ui="Card"] {
+  min-height: 3.5rem;
+}
+
+/* Selected icon preview — enlarge container, let SVG fill naturally */
+[data-ui="MenuButton"] > [data-ui="Button"] {
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+[data-ui="MenuButton"] > [data-ui="Button"] span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+[data-ui="MenuButton"] svg {
+  width: 2em !important;
+  height: 2em !important;
+  overflow: visible !important;
+}

@@ -1,6 +1,8 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
+import { iconPicker } from 'sanity-plugin-icon-picker';
 import { schemaTypes } from './schemas';
+import './static/custom.css';
 
 // Types where clients can only edit existing documents, not create or delete
 const LOCKED_TYPES = ['page', 'legalPage', 'siteSettings', 'socialLinks', 'navigation'];
@@ -9,7 +11,7 @@ const projectId = process.env.SANITY_STUDIO_PROJECT_ID!;
 
 const sharedConfig = {
   projectId,
-  plugins: [structureTool()],
+  plugins: [structureTool(), iconPicker()],
   schema: { types: schemaTypes },
   document: {
     actions: (prev: any[], context: { schemaType: string }) => {

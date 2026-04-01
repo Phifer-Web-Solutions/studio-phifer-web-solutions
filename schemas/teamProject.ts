@@ -1,11 +1,11 @@
 import { defineType, defineField } from 'sanity';
-import { HiRocketLaunch } from 'react-icons/hi2';
+import { HiUserGroup } from 'react-icons/hi2';
 
 export default defineType({
-  name: 'caseStudy',
-  title: 'Projects',
+  name: 'teamProject',
+  title: 'Team Projects',
   type: 'document',
-  icon: HiRocketLaunch,
+  icon: HiUserGroup,
   fields: [
     defineField({
       name: 'title',
@@ -52,7 +52,7 @@ export default defineType({
     defineField({
       name: 'imageAlt',
       title: 'Cover image alt text',
-      description: 'Describe the image for screen readers (e.g. "Screenshot of church website homepage")',
+      description: 'Describe the image for screen readers (e.g. "Screenshot of project dashboard")',
       type: 'string',
     }),
     defineField({
@@ -68,7 +68,7 @@ export default defineType({
       return {
         title: title || 'Untitled',
         subtitle: category || undefined,
-        media: logo || HiRocketLaunch,
+        media: logo || HiUserGroup,
       };
     },
   },
