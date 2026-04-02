@@ -23,8 +23,16 @@ export default defineType({
     }),
     defineField({
       name: 'logo',
-      title: 'Site Logo',
-      description: 'Replaces the text name in the header and footer when set',
+      title: 'Site Logo (Light Mode)',
+      description: 'Used on light backgrounds — replaces the text name in the header',
+      type: 'image',
+      group: 'branding',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'darkLogo',
+      title: 'Site Logo (Dark Mode)',
+      description: 'Used on dark backgrounds — if empty, the light logo is used',
       type: 'image',
       group: 'branding',
       options: { hotspot: true },

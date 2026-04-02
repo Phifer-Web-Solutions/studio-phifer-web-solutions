@@ -1,0 +1,15 @@
+[build]
+  command = "npx sanity build"
+  publish = "dist"
+
+# Redirect root to production workspace
+[[redirects]]
+  from = "/"
+  to = "/production"
+  status = 302
+
+# SPA catch-all for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
